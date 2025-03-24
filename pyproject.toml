@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "amazon-ai-chatbot"
+version = "0.1.0"
+description = ""
+authors = ["chibuike"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.3"
+streamlit = "^1.43.2"
+configparser = "^7.2.0"
+ipykernel = "^6.29.5"
+pymysql = "^1.1.1"
+streamlit-feedback = "^0.1.4"
+loguru = "^0.7.3"
+langchain = "^0.3.21"
+langsmith = "^0.3.18"
+langchain-community = "^0.3.20"
+langchain-ollama = "^0.3.0"
+numpy = "^2.2.4"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
