@@ -134,9 +134,7 @@ def load_data_to_mysqldb():
 
 
 def etl():
+    """ etl pipeline for data extraction, processing and storage"""
     dataframe = extract_data()
     transform_data(dataframe)
     load_data_to_mysqldb()
-
-if __name__ == "__main__":
-    etl()

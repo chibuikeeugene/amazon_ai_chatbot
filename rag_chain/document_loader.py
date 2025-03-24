@@ -67,6 +67,7 @@ def document_embeddings(docs):
     embeddings = OllamaEmbeddings(model='llama3.1')
 
     # creating the vector store
+    logger.info('creating the vector embeddings...')
     vectorstore_db = Chroma.from_documents(
         documents=docs,
         embedding=embeddings,

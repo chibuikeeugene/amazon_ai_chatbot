@@ -3,3 +3,6 @@
 *.env
 *.pyc
 /.venv
+*.csv
+*.bin
+*.sqlite3

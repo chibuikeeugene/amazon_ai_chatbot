@@ -1,18 +1,17 @@
-from rag_chain.document_loader import document_loader 
-from rag_chain.document_loader import document_embeddings
 from langchain_ollama.chat_models import ChatOllama
-from langchain_ollama.llms import OllamaLLM
-from langchain.memory import ConversationBufferMemory
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 import streamlit as st
 
 @st.cache_resource(show_spinner=False)
-def retrieval_chain(vectore_store, system_prompt, _memory):
+def retrieval_chain(_vectore_store, _memory):
     """ Returns a conversational retrieval chain with memory
     args:
-    vectore_store - an instance of the vectorstore
+    * _vectore_store - an instance of the vectorstore
 
-    prompt-template - 
+    * _memory - to persist chat history interactions
+
+    return:
+    * conversational retrieval chain
     """
     # creating an instance of the chatmodel
     chat_model = ChatOllama(
@@ -23,14 +22,13 @@ def retrieval_chain(vectore_store, system_prompt, _memory):
     )
 
     # load retriever object
-    retriever = vectore_store.retriever()
+    retriever = _vectore_store.as_retriever()
 
     # creating the chat retriever chain object
     chat_retreiver_chain  = ConversationalRetrievalChain.from_llm(
         llm=chat_model,
         retriever=retriever,
         memory = _memory,
-        condense_question_prompt = system_prompt
     )
 
     return chat_retreiver_chain
