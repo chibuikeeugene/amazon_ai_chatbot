@@ -1,5 +1,5 @@
-from document_loader import document_loader 
-from document_loader import document_embeddings
+from rag_chain.document_loader import document_loader 
+from rag_chain.document_loader import document_embeddings
 from langchain_ollama.chat_models import ChatOllama
 from langchain_ollama.llms import OllamaLLM
 from langchain.memory import ConversationBufferMemory

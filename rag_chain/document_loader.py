@@ -1,7 +1,6 @@
 import configparser
 from langchain_ollama.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import CSVLoader
 import pymysql
 import pandas as pd

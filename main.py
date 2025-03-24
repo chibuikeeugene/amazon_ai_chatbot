@@ -4,7 +4,6 @@ from langchain.memory import ConversationBufferMemory
 from langchain_community.chat_message_histories.streamlit import StreamlitChatMessageHistory
 from langsmith import Client
 from loguru import logger
-import os
 from rag_chain import document_loader, chain, prompt_template
 from dotenv import load_dotenv
 
