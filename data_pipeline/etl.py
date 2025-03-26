@@ -137,4 +137,7 @@ def etl():
     """ etl pipeline for data extraction, processing and storage"""
     dataframe = extract_data()
     transform_data(dataframe)
+
+    # validate existing records in db to avoid duplicate before loading new data into db
+    # TODO: Create a conditional validation check
     load_data_to_mysqldb()
