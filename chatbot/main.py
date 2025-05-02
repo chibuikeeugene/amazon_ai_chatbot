@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from chatbot import document_loader
 import chromadb
 
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 import traceback
 from chatbot import chain
 from data_pipeline import etl
@@ -48,8 +48,7 @@ if st.sidebar.button(" Clear message history"):
     st.session_state.run_id = None
     st.session_state.clear()
 
-def user_bot_system(amazon_retriever:t.Optional[t.Any | None] = None, 
-                    db:t.Optional[t.Any | None] = None):
+def user_bot_system(amazon_retriever):
     """user bot function"""
 
     # initialize chat history
@@ -63,39 +62,25 @@ def user_bot_system(amazon_retriever:t.Optional[t.Any | None] = None,
 
     # user input definition
     if prompt := st.chat_input('Ask your question: '):
+
         # display user message in chat container
         with st.chat_message('user'):
             st.markdown(prompt)
+
         # adding user message to chat history
         st.session_state.messages.append({'role': 'user', 'content':prompt})
 
-        if db:
-            try:
-                db_result = db.similarity_search(query=prompt)
-            except Exception as e:
-                logger.error(f'Caught query error: {e}')
-                traceback.print_exc()
-            else:
-                formatted_result = chain.combine_docs(docs=db_result)
-                bot_response = chain.chat_model(prompt, formatted_result)
+        bot_response = chain.rag_chain(question=prompt, _retriever=amazon_retriever)
 
-                # display assitant response in chat message container
-                with st.chat_message('assistant'):
-                    st.markdown(bot_response)
+        # display assitant response in chat message container
+        with st.chat_message('assistant'):
+            # response = st.write_stream(bot_response)
+            st.markdown(bot_response)
+            
+        # adding assistance response to chat history
+        st.session_state.messages.append({'role':'assistant', 'content': bot_response})
 
-                # adding assistance response to chat history
-                st.session_state.messages.append({'role':'assistant', 'content': bot_response})
-
-        else:
-            bot_response = chain.rag_chain(question=prompt, _retriever=amazon_retriever)
-
-            # display assitant response in chat message container
-            with st.chat_message('assistant'):
-                # response = st.write_stream(bot_response)
-                st.markdown(bot_response)
-                
-            # adding assistance response to chat history
-            st.session_state.messages.append({'role':'assistant', 'content': bot_response})
+        
 
 # check if vectorstore exists already, if not load data from api, process this data and save in the mysql database
 if __name__ == "__main__":
@@ -109,8 +94,10 @@ if __name__ == "__main__":
                     persist_directory='./chatbot/chromadb/',
                     embedding_function=embeddings
                     )
+        
+        retriever = db_collection.as_retriever()
 
-        user_bot_system(db=db_collection)
+        user_bot_system(amazon_retriever=retriever)
         
     else:
         # activity 1
