@@ -27,6 +27,7 @@ def extract_data() -> pd.DataFrame:
         url= product_url,
         timeout=60
     )
+    product.raise_for_status()
     product_data = product.json()
     print("Data retrieved successfully...")
 
