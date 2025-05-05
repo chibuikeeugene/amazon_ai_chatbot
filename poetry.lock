@@ -2973,23 +2973,6 @@ doc = ["reno", "sphinx"]
 test = ["pytest", "tornado (>=4.5)", "typeguard"]
 
 [[package]]
-name = "tensorflow-metal"
-version = "1.2.0"
-description = "TensorFlow acceleration for Mac GPUs."
-optional = false
-python-versions = "*"
-files = [
-    {file = "tensorflow_metal-1.2.0-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:bc735e36c97874e41f77ec2e7421ff745d2ec36ee641141c8091e4cc2dbcc819"},
-    {file = "tensorflow_metal-1.2.0-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:5fa7cee627031c14f45bd97ff0ef422cd6c3866199ff99cf29b94db6674ceb42"},
-    {file = "tensorflow_metal-1.2.0-cp312-cp312-macosx_12_0_arm64.whl", hash = "sha256:4bece0ecb154b713b9f5ad4aec676a366d312822161e3cf0e1dea737c64cec04"},
-    {file = "tensorflow_metal-1.2.0-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:4c52a9f7768b10ac226be758e953973734707161caaee328bd2da0cdf93c4643"},
-]
-
-[package.dependencies]
-six = ">=1.15.0"
-wheel = ">=0.35,<1.0"
-
-[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -3155,20 +3138,6 @@ files = [
     {file = "wcwidth-0.2.13-py2.py3-none-any.whl", hash = "sha256:3da69048e4540d84af32131829ff948f1e022c1c6bdb8d6102117aac784f6859"},
     {file = "wcwidth-0.2.13.tar.gz", hash = "sha256:72ea0c06399eb286d978fdedb6923a9eb47e1c486ce63e9b4e64fc18303972b5"},
 ]
-
-[[package]]
-name = "wheel"
-version = "0.45.1"
-description = "A built-package format for Python"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "wheel-0.45.1-py3-none-any.whl", hash = "sha256:708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248"},
-    {file = "wheel-0.45.1.tar.gz", hash = "sha256:661e1abd9198507b1409a20c02106d9670b2576e916d58f520316666abca6729"},
-]
-
-[package.extras]
-test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 
 [[package]]
 name = "win32-setctime"
@@ -3400,4 +3369,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "806f2080cf98c053a168da8c9ae8bc4b556b9530014a7f57f9ea06db9d923c67"
+content-hash = "6067ce7e694859c41bb5008ab748b021e52b168c5d4e704878ae7e947698b4a4"
