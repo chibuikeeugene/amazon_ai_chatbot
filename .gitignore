@@ -6,3 +6,4 @@
 *.csv
 *.bin
 *.sqlite3
+*.lock
