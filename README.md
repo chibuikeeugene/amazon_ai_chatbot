@@ -31,7 +31,7 @@ Use command - streamlit run main.py
 
 ## Snapshots
 ### RAG schema
-![RAG Schema](<>)
+![RAG Schema](<basic rag chatbot.drawio.png>)
 
 ### Live shots
 ![Screenshot 1](<Screenshot 2025-05-05 at 3.35.09 PM.png>)
